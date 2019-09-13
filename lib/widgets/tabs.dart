@@ -11,6 +11,7 @@ class AppTabs extends StatelessWidget {
       height: 100.0,
       margin: EdgeInsets.only(top: 20),
       child: ListView(
+        padding: EdgeInsets.only(left: 10, right: 20),
         scrollDirection: Axis.horizontal,
         children: items,
       ),
