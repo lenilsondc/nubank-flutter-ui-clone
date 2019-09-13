@@ -59,30 +59,33 @@ class AppMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 12),
-            decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(color: Colors.white.withOpacity(.8)))),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  icon,
-                  color: Colors.white,
-                ),
-                SizedBox(width: 20),
-                Text(
-                  text,
-                  style: TextStyle(color: Colors.white),
-                )
-              ],
+    return InkWell(
+      onTap: () {},
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 12),
+              decoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(color: Colors.white.withOpacity(.8)))),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    icon,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 20),
+                  Text(
+                    text,
+                    style: TextStyle(color: Colors.white),
+                  )
+                ],
+              ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }
