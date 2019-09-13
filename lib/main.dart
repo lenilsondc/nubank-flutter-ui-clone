@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nubank_clone/widgets/card.dart';
 
 import 'package:nubank_clone/widgets/header.dart';
+import 'package:nubank_clone/widgets/menu.dart';
 import 'package:nubank_clone/widgets/tabs.dart';
 
 void main() => runApp(MyApp());
@@ -16,10 +18,15 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Color(0xff8B10AE),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             AppHeader(),
+            Expanded(
+              child: Stack(
+                children: <Widget>[AppMenu(), /*AppCard()*/],
+              ),
+            ),
             AppTabs(items: <AppTabsItem>[
               AppTabsItem(text: 'Indicar Amigo', icon: Icons.person_add),
               AppTabsItem(text: 'Cobrar', icon: Icons.chat_bubble_outline),
