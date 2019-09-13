@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:nubank_clone/widgets/header.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,26 +17,7 @@ class MyApp extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset('assets/images/Nubank_Logo.png'),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Lenilson',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-            )
-          ],
+          children: <Widget>[AppHeader()],
         ),
       ),
     );
