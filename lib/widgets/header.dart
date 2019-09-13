@@ -4,24 +4,27 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 40, bottom: 30),
+      padding: EdgeInsets.only(top: 80, bottom: 30),
       child: Column(
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset('assets/images/Nubank_Logo.png'),
-              SizedBox(
-                width: 8,
-              ),
-              Text(
-                'Lenilson',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
+          Container(
+            margin: EdgeInsets.only(bottom: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset('assets/images/Nubank_Logo.png'),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  'Lenilson',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
           ),
           Icon(
             Icons.keyboard_arrow_down,
