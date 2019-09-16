@@ -15,8 +15,32 @@ class MyApp extends StatefulWidget {
 const Offset start = Offset(0, 160);
 const Offset end = Offset(0, 570);
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   Offset _offset = start;
+  AnimationController animationCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+
+    animationCtrl = AnimationController(
+        vsync: this,
+        lowerBound: start.dy,
+        upperBound: end.dy,
+        duration: Duration(milliseconds: 300));
+
+    animationCtrl.addListener(() {
+      setState(() {
+        _offset = Offset(0, animationCtrl.value);
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    animationCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.deepPurple,
       ),
       home: Scaffold(
-        backgroundColor: Color(0xff8B10AE),
+        backgroundColor: Color(0xff8A05BE),
         body: Stack(
           children: <Widget>[
             Column(
@@ -44,30 +68,28 @@ class _MyAppState extends State<MyApp> {
                 ])
               ],
             ),
-            AnimatedContainer(
-                duration: Duration(milliseconds: 1000),
-                child: Container(
-                  child: Transform.translate(
-                      offset: _offset,
-                      child: GestureDetector(
-                        onPanUpdate: (DragUpdateDetails details) {
-                          if (_offset.dy >= start.dy - 10 &&
-                              _offset.dy <= end.dy + 10) {
-                            setState(
-                                () => _offset += Offset(0, details.delta.dy));
-                          }
-                        },
-                        onPanEnd: (DragEndDetails details) {
-                          if ((_offset.dy - start.dy) >
-                              (end.dy - start.dy) / 2) {
-                            setState(() => _offset = end);
-                          } else {
-                            setState(() => _offset = start);
-                          }
-                        },
-                        child: AppCard(),
-                      )),
-                )),
+            Container(
+              child: Transform.translate(
+                  offset: _offset,
+                  child: GestureDetector(
+                    onPanUpdate: (DragUpdateDetails details) {
+                      if (_offset.dy >= start.dy && _offset.dy <= end.dy) {
+                        setState(() => _offset += Offset(0, details.delta.dy));
+                      } else {
+                        setState(
+                            () => _offset += Offset(0, details.delta.dy * 0.1));
+                      }
+                    },
+                    onPanEnd: (DragEndDetails details) {
+                      if ((_offset.dy - start.dy) > (end.dy - start.dy) / 2) {
+                        animationCtrl.forward(from: _offset.dy);
+                      } else {
+                        animationCtrl.reverse(from: _offset.dy);
+                      }
+                    },
+                    child: AppCard(),
+                  )),
+            ),
           ],
         ),
       ),
