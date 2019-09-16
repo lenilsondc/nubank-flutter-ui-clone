@@ -4,7 +4,7 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 80, bottom: 30),
+      padding: EdgeInsets.only(top: 80),
       child: Column(
         children: <Widget>[
           Container(
