@@ -12,8 +12,12 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+const Offset start = Offset(0, 160);
+const Offset end = Offset(0, 570);
+
 class _MyAppState extends State<MyApp> {
-  Offset _offset = Offset(0, 160);
+  Offset _offset = start;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,18 +44,30 @@ class _MyAppState extends State<MyApp> {
                 ])
               ],
             ),
-            Container(
-                child: AnimatedContainer(
-              duration: Duration(milliseconds: 100),
-              child: Transform.translate(
-                  offset: _offset,
-                  child: GestureDetector(
-                    onPanUpdate: (DragUpdateDetails details) {
-                      setState(() => _offset += Offset(0, details.delta.dy));
-                    },
-                    child: AppCard(),
-                  )),
-            )),
+            AnimatedContainer(
+                duration: Duration(milliseconds: 1000),
+                child: Container(
+                  child: Transform.translate(
+                      offset: _offset,
+                      child: GestureDetector(
+                        onPanUpdate: (DragUpdateDetails details) {
+                          if (_offset.dy >= start.dy - 10 &&
+                              _offset.dy <= end.dy + 10) {
+                            setState(
+                                () => _offset += Offset(0, details.delta.dy));
+                          }
+                        },
+                        onPanEnd: (DragEndDetails details) {
+                          if ((_offset.dy - start.dy) >
+                              (end.dy - start.dy) / 2) {
+                            setState(() => _offset = end);
+                          } else {
+                            setState(() => _offset = start);
+                          }
+                        },
+                        child: AppCard(),
+                      )),
+                )),
           ],
         ),
       ),
