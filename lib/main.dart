@@ -58,14 +58,22 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 AppHeader(),
-                Expanded(child: AppMenu()),
-                AppTabs(items: <AppTabsItem>[
-                  AppTabsItem(text: 'Indicar Amigo', icon: Icons.person_add),
-                  AppTabsItem(text: 'Cobrar', icon: Icons.chat_bubble_outline),
-                  AppTabsItem(text: 'Depositar', icon: Icons.arrow_downward),
-                  AppTabsItem(text: 'Transferir', icon: Icons.arrow_upward),
-                  AppTabsItem(text: 'Bloquear cartão', icon: Icons.lock),
-                ])
+                Expanded(
+                    child: Opacity(
+                  opacity: _getOpacity(),
+                  child: AppMenu(),
+                )),
+                Opacity(
+                  opacity: 1 - _getOpacity() * 0.8,
+                  child: AppTabs(items: <AppTabsItem>[
+                    AppTabsItem(text: 'Indicar Amigo', icon: Icons.person_add),
+                    AppTabsItem(
+                        text: 'Cobrar', icon: Icons.chat_bubble_outline),
+                    AppTabsItem(text: 'Depositar', icon: Icons.arrow_downward),
+                    AppTabsItem(text: 'Transferir', icon: Icons.arrow_upward),
+                    AppTabsItem(text: 'Bloquear cartão', icon: Icons.lock),
+                  ]),
+                )
               ],
             ),
             Container(
@@ -94,5 +102,20 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  double _getOpacity() {
+    double offset = (end.dy - start.dy);
+    double opacity =
+        offset == 0 ? 0 : (_offset.dy - start.dy) / (end.dy - start.dy);
+
+    if (opacity < 0) {
+      opacity = 0;
+    }
+    if (opacity > 1) {
+      opacity = 1;
+    }
+
+    return opacity;
   }
 }
