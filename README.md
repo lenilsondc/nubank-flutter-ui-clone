@@ -1,16 +1,11 @@
-# nubank_clone
+# Nubank UI Flutter Clone (sort of)
 
-A new Flutter project.
+This project is meant to explore Flutter features by making a simple version of Nubank's app interface.
 
-## Getting Started
+Inspired by the Nubank app interface clone build in React Native: [youtube-react-native-nubank](https://github.com/Rocketseat/youtube-react-native-nubank), this app seek to explore similar features present on React Native like styling, animation and gesture handling (Flutter has done very well so far).
 
-This project is a starting point for a Flutter application.
+**Screencapture**
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+    <img src="./screencapture.gif">
+</p>
