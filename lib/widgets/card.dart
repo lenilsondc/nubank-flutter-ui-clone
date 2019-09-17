@@ -37,7 +37,7 @@ class AppCard extends StatelessWidget {
                               TextStyle(fontSize: 12, color: Color(0xff666666)),
                         ),
                         Text(
-                          'R\$ 197.611,65',
+                          'R\$ 2.611,65',
                           style:
                               TextStyle(fontSize: 32, color: Color(0xff333333)),
                         ),
@@ -53,7 +53,7 @@ class AppCard extends StatelessWidget {
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(4))),
             child: Text(
-                'Transferência de R\$ 20,00 recebida de Diego Schell Fernandes hoje às 06:00h',
+                'Transferência de R\$ 150,00 recebida de José da Silva hoje às 14:30h',
                 style: TextStyle(fontSize: 12, color: Color(0xff333333))),
           )
         ],
